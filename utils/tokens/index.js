@@ -1,4 +1,5 @@
-export const colors = {
+const colors = {
+  initialColorMode: 'light',
   accent: `#FFC001`,
   black: `#1C1C1C`,
   white: `#FFFFFF`,
@@ -9,9 +10,24 @@ export const colors = {
   }
 }
 
-export const fontWeights = [400, 700]
+const fonts = {
+  body: 'system-ui, sans-serif',
+  heading: 'system-ui, sans-serif',
+  monospace: 'Menlo, monospace'
+}
 
-export const breakpoints = {
+const fontWeights = {
+  body: 400,
+  heading: 700,
+  bold: 700,
+}
+
+const lineHeights = {
+  body: 1.5,
+  heading: 1.125,
+}
+
+const breakpoints = {
   xs: `320px`,
   sm: `550px`,
   md: `750px`,
@@ -20,7 +36,7 @@ export const breakpoints = {
   xxl: `1600px`
 }
 
-export const space = [
+const space = [
   0, 4, 8, 16, 32, 64, 128, 256, 512
 ]
 
@@ -30,8 +46,11 @@ for (let breakpoint in breakpoints) {
 }
 
 export default {
+  fonts,
   fontWeights,
   breakpoints,
   space,
-  mediaQueries
+  mediaQueries,
+  lineHeights,
+  colors,
 }
