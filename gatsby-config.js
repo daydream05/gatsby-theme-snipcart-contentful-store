@@ -12,12 +12,6 @@ module.exports = themeOptions => {
         }
       },
       {
-        resolve: "gatsby-plugin-page-creator",
-        options: {
-          path: path.join(__dirname, "src/pages"),
-        },
-      },
-      {
         resolve: `gatsby-source-contentful`,
         options: themeOptions.contentfulOptions,
       },

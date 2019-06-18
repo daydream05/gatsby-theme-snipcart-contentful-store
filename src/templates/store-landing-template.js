@@ -1,34 +1,33 @@
 import React from "react"
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import tokens from '../../utils/tokens'
 
 import Layout from '../components/layout'
 
-const Shop = ({ data }) => {
-  console.log(data)
-
+const StoreLanding = ({ data }) => {
   return (
     <Layout>
       <h1>I'm a shopping page</h1>
       <div>
         <ul>
-          {data.allContentfulProduct.edges.map(({ node }) => {
-            return (
-              <li
-                key={node.id}
-              >
-                {node.name}
-              </li>
-            )
-          })}
+          {data
+            .allContentfulProduct
+            .edges
+            .map(({node}) => {
+              return (
+                <li key={node.id}>
+                  <Link to={node.fields.path}>{node.name}</Link>
+                </li>
+              )
+            })}
         </ul>
       </div>
     </Layout>
   )
 }
 
-export const shopQuery = graphql`
+export const storeLandingQuery = graphql`
   query {
     allContentfulProduct {
       edges {
@@ -41,10 +40,13 @@ export const shopQuery = graphql`
               content
             }
           }
+          fields {
+            path
+          }
         }
       }
     }
   }
 `
 
-export default Shop
+export default StoreLanding
