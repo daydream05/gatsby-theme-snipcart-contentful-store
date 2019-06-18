@@ -1,7 +1,6 @@
 const path = require("path")
 
 module.exports = themeOptions => {
-  console.log(themeOptions)
   return {
     plugins: [
       {
@@ -17,6 +16,10 @@ module.exports = themeOptions => {
         options: {
           path: path.join(__dirname, "src/pages"),
         },
+      },
+      {
+        resolve: `gatsby-source-contentful`,
+        options: themeOptions.contentfulOptions,
       },
     ],
   }

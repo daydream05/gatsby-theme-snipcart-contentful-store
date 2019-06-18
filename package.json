@@ -13,6 +13,7 @@
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
     "gatsby-mdx": "^0.6.3",
-    "gatsby-plugin-page-creator": "^2.0.13"
+    "gatsby-plugin-page-creator": "^2.0.13",
+    "gatsby-source-contentful": "^2.0.72"
   }
 }
