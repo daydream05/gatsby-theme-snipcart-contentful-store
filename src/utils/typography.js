@@ -65,6 +65,4 @@ const typography = new Typography({
   },
 })
 
-console.log(toTheme(typography))
-
 export default toTheme(typography)

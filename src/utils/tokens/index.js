@@ -50,6 +50,8 @@ for (let breakpoint in breakpoints) {
   mediaQueries[breakpoint] = `@media (min-width: ${breakpoints[breakpoint]})`
 }
 
+const maxWidths = [`900px`, `1200px`, `1440px`]
+
 export default {
   fonts,
   fontSizes,
@@ -59,4 +61,5 @@ export default {
   mediaQueries,
   lineHeights,
   colors,
+  maxWidths
 }

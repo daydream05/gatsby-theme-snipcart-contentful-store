@@ -1,40 +1,45 @@
 import React from "react"
-import { graphql, Link } from 'gatsby'
-import { css } from 'theme-ui'
+import { graphql } from 'gatsby'
+import { css, Styled } from 'theme-ui'
 
 import tokens from '../utils/tokens'
 
 import Layout from '../components/layout'
+import ProductList from '../components/product-list'
+import ProductThumbnail from '../components/product-thumbnail'
 
 const StoreLanding = props => {
   const { data } = props
   const { mediaQueries } = tokens
 
-  console.log(mediaQueries)
+  console.log(props)
 
   return (
     <Layout>
-      <h1
+      <div
         css={css({
-          color: 'accent',
-          [mediaQueries.lg]: {
-            color: 'blue',
-          }
+          backgroundColor: `white`,
+          minHeight: `100vh`,
         })}
-      >I'm a shopping page</h1>
-      <div>
-        <ul>
-          {data
-            .allContentfulProduct
-            .edges
-            .map(({node}) => {
-              return (
-                <li key={node.id}>
-                  <Link to={node.fields.path}>{node.name}</Link>
-                </li>
-              )
+      >
+        <div
+          css={css({
+            px: [3],
+            pt: [5],
+            [mediaQueries.lg]: {
+              maxWidth: [tokens.maxWidths[1]],
+              margin: `auto`,
+            }
+          })}
+        >
+          <Styled.h1
+            css={css({
+              color: 'black',
+              mb: [5],
             })}
-        </ul>
+          >Products</Styled.h1>
+          <ProductList products={data.allContentfulProduct.edges} />
+        </div>
       </div>
     </Layout>
   )
@@ -45,17 +50,7 @@ export const storeLandingQuery = graphql`
     allContentfulProduct {
       edges {
         node {
-          id
-          name
-          price
-          shortDescription {
-            internal {
-              content
-            }
-          }
-          fields {
-            path
-          }
+          ...ProductThumbnail
         }
       }
     }
