@@ -1,14 +1,27 @@
 import React from "react"
 import { graphql, Link } from 'gatsby'
+import { css } from 'theme-ui'
 
-import tokens from '../../utils/tokens'
+import tokens from '../utils/tokens'
 
 import Layout from '../components/layout'
 
-const StoreLanding = ({ data }) => {
+const StoreLanding = props => {
+  const { data } = props
+  const { mediaQueries } = tokens
+
+  console.log(mediaQueries)
+
   return (
     <Layout>
-      <h1>I'm a shopping page</h1>
+      <h1
+        css={css({
+          color: 'accent',
+          [mediaQueries.lg]: {
+            color: 'blue',
+          }
+        })}
+      >I'm a shopping page</h1>
       <div>
         <ul>
           {data

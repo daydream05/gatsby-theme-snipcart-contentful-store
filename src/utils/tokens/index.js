@@ -1,5 +1,7 @@
 const colors = {
   initialColorMode: 'light',
+  text: `#1C1C1C`,
+  background: `#fff`,
   accent: `#FFC001`,
   black: `#1C1C1C`,
   white: `#FFFFFF`,
@@ -27,14 +29,14 @@ const lineHeights = {
   heading: 1.125,
 }
 
-const breakpoints = {
-  xs: `320px`,
-  sm: `550px`,
-  md: `750px`,
-  lg: `1000px`,
-  xl: `1200px`,
-  xxl: `1600px`
-}
+const breakpoints = [`320px`, `550px`, `750px`, `1000px`, `1200px`, `1600px`]
+
+breakpoints.xs = breakpoints[0]
+breakpoints.sm = breakpoints[1]
+breakpoints.md = breakpoints[2]
+breakpoints.lg = breakpoints[3]
+breakpoints.xl = breakpoints[4]
+breakpoints.xxl = breakpoints[5]
 
 const space = [
   0, 4, 8, 16, 32, 64, 128, 256, 512

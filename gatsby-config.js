@@ -15,6 +15,7 @@ module.exports = themeOptions => {
         resolve: `gatsby-source-contentful`,
         options: themeOptions.contentfulOptions,
       },
+      `gatsby-plugin-emotion`,
     ],
   }
 }
