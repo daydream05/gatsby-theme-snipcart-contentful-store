@@ -18,6 +18,9 @@ const fonts = {
   monospace: 'Menlo, monospace'
 }
 
+const fontSizes =
+  [`0.72rem`, `0.83rem`, `1rem`, `1.333rem`, `2rem`, `2.66rem`, `4.667rem`]
+
 const fontWeights = {
   body: 400,
   heading: 700,
@@ -49,6 +52,7 @@ for (let breakpoint in breakpoints) {
 
 export default {
   fonts,
+  fontSizes,
   fontWeights,
   breakpoints,
   space,
