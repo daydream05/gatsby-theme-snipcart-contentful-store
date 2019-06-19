@@ -39,7 +39,6 @@ exports.createPages = (
 
       products.map(({ node }) => {
         const url = node.fields.path
-        console.log(url)
 
         createPage({
           path: url,

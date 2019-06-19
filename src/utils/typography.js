@@ -3,7 +3,7 @@ import { toTheme } from 'theme-ui-typography'
 
 import tokens from './tokens'
 
-const { fonts, fontWeights, fontSizes, lineHeights, colors, mediaQueries } = tokens
+const { fonts, fontSizes, lineHeights, colors, mediaQueries } = tokens
 
 const typography = new Typography({
   baseFontSize: "18px",

@@ -6,13 +6,10 @@ import tokens from '../utils/tokens'
 
 import Layout from '../components/layout'
 import ProductList from '../components/product-list'
-import ProductThumbnail from '../components/product-thumbnail'
 
 const StoreLanding = props => {
   const { data } = props
   const { mediaQueries } = tokens
-
-  console.log(props)
 
   return (
     <Layout>

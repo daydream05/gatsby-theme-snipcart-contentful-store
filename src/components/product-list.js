@@ -1,5 +1,5 @@
 import React from 'react'
-import { css, Styled } from 'theme-ui'
+import { css } from 'theme-ui'
 
 import tokens from '../utils/tokens'
 
