@@ -25,29 +25,31 @@ const ProductTemplate = ({ data }) => {
           }
         })}
       >
-        <div>Photo here</div>
-        <section>
+        <div
+          css={css({
+            backgroundColor: 'grey.dark',
+          })}
+        />
+        <section
+          css={css({
+            px: [3,3,3,3,4,0],
+          })}
+        >
+          <span
+            css={css({
+              fontSize: [3],
+              fontWeight: 'body',
+            })}
+          >${price}
+          </span>
           <Styled.h1
             css={css({
-              mb: [4],
+              mb: [1],
             })}
           >{name}</Styled.h1>
           <div>
             <p>{shortDescription.internal.content}</p>
           </div>
-          <span
-            css={css({
-              fontSize: [4],
-              fontWeight: 'body',
-            })}
-          >${price}
-            <span
-              css={css({
-                opacity: 0.25,
-                fontSize: [3],
-              })}
-            >.00</span>
-          </span>
         </section>
       </section>
     </Layout>
