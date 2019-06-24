@@ -1,10 +1,9 @@
 import React from 'react'
-import { ThemeProvider, Styled } from 'theme-ui'
-import theme from './utils/theme'
+import ThemeProvider from './components/theme-provider'
 
-export const wrapRootElement = ({ element }) =>
-  <ThemeProvider theme={theme}>
-    <Styled.root>
-      {element}
-    </Styled.root>
-  </ThemeProvider>
+export const wrapPageElement = ({ element }) => {
+  return (
+    <ThemeProvider>{element}</ThemeProvider>
+  )
+}
+

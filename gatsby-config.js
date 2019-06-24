@@ -1,7 +1,11 @@
-const path = require("path")
-
 module.exports = themeOptions => {
   return {
+    siteMetadata: {
+      title: `Contentful and Snipcart Powered Shop`,
+      // will override the default values,
+      ...themeOptions.siteMetadata,
+      theme: JSON.stringify(themeOptions.theme)
+    },
     plugins: [
       {
         resolve: `gatsby-mdx`,
