@@ -5,6 +5,7 @@ import { css, Styled } from 'theme-ui'
 import tokens from '../utils/tokens'
 
 import Layout from '../components/layout'
+import SnipcartButton from '../components/SnipcartButton'
 
 const ProductTemplate = ({ data }) => {
   const { name, shortDescription, price } = data.contentfulProduct
@@ -50,6 +51,7 @@ const ProductTemplate = ({ data }) => {
           <div>
             <p>{shortDescription.internal.content}</p>
           </div>
+                  <SnipcartButton>Buy now</SnipcartButton>
         </section>
       </section>
     </Layout>
