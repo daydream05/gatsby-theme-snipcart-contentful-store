@@ -19,6 +19,10 @@ module.exports = themeOptions => {
         resolve: `gatsby-source-contentful`,
         options: themeOptions.contentfulOptions,
       },
+      {
+        resolve: 'gatsby-plugin-snipcart',
+        options: themeOptions.snipcartOptions,
+      },
       `gatsby-plugin-emotion`,
       `gatsby-transformer-remark`,
     ],

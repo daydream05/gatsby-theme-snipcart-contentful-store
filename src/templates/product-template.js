@@ -87,6 +87,8 @@ const ProductTemplate = ({ data }) => {
             css={css({
               lineHeight: 'body',
               mb: [3,3,3,5],
+              color: `black`,
+              opacity: 0.8,
             })}
           />
           <QuantityGroup>
