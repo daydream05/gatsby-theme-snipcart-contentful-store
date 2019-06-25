@@ -20,6 +20,7 @@ module.exports = themeOptions => {
         options: themeOptions.contentfulOptions,
       },
       `gatsby-plugin-emotion`,
+      `gatsby-transformer-remark`,
     ],
   }
 }
