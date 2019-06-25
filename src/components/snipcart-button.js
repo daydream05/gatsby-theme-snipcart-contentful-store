@@ -14,8 +14,8 @@ const Button = styled.button`
   font-size: 18px;
   cursor: pointer;
   padding: 0 2rem;
-  justify-self: flex-end;
   border: none;
+  width: 100%;
 `
 
 // The purpose of this function is to make it easier to append the siteUrl
@@ -33,8 +33,8 @@ const SnipcartButton = ({ children, relativeUrl, className, ...rest }) => {
   
   return (
     <Button
-      className={className}
-      data-item-url={`${data.site.siteMetadata.siteUrl}/${relativeUrl || ''}`}
+      className={`snipcart-add-item ${className}`}
+      data-item-url={`${data.site.siteMetadata.siteUrl}${relativeUrl || ''}`}
       {...rest}
     >{children}</Button>
   )
