@@ -101,6 +101,7 @@ const ProductTemplate = ({ data }) => {
               data-item-id={id}
               data-item-name={name}
               data-item-price={price}
+              data-item-image={thumbnailPhoto.small.src}
               className="test"
               relativeUrl={fields.path}
             >Buy now</SnipcartButton>
@@ -109,6 +110,7 @@ const ProductTemplate = ({ data }) => {
               data-item-name={name}
               data-item-price={price}
               data-item-quantity={quantity}
+              data-item-image={thumbnailPhoto.small.src}
               css={css({
                 backgroundColor: 'white',
                 border: `1px solid black`,
@@ -134,6 +136,9 @@ export const query = graphql`
           ...GatsbyContentfulFluid_withWebp
         }
         fixed(width: 600, height: 600) {
+          ...GatsbyContentfulFixed_withWebp
+        }
+        small: fixed(width: 100, height: 100) {
           ...GatsbyContentfulFixed_withWebp
         }
       }
