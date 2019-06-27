@@ -32,7 +32,6 @@ const ProductList = (props) => {
                 name={node.name}
                 image={node.mainPhoto}
                 url={node.fields.path}
-                description={node.shortDescription.internal.content}
                 price={node.price}
               />
             </li>
