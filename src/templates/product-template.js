@@ -82,15 +82,16 @@ const ProductTemplate = ({ data }) => {
               mb: [1,1,1,3],
             })}
           >{name}</Styled.h1>
-          <div
-            dangerouslySetInnerHTML={{ __html: longDescription.childMarkdownRemark.html }}
-            css={css({
-              lineHeight: 'body',
-              mb: [3,3,3,5],
-              color: `black`,
-              opacity: 0.8,
-            })}
-          />
+          {longDescription &&
+            <div
+              dangerouslySetInnerHTML={{ __html: longDescription.childMarkdownRemark.html }}
+              css={css({
+                lineHeight: 'body',
+                mb: [3,3,3,5],
+                color: `black`,
+                opacity: 0.8,
+              })}
+            />}
           <QuantityGroup>
             <QuantityTitle>Quantity</QuantityTitle>
             <QuantitySelector onQuantityChange={setQuantity} />
