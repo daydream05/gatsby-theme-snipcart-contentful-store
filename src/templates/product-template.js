@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { css, Styled } from 'theme-ui'
 import Img from 'gatsby-image'
+import _ from 'lodash'
 
 import tokens from '../utils/tokens'
 import theme from '../utils/theme'
@@ -10,6 +11,7 @@ import theme from '../utils/theme'
 import Layout from '../components/layout'
 import SnipcartButton from '../components/snipcart-button'
 import QuantitySelector from '../components/quantity-selector'
+import VariantSelector from '../components/variant-selector'
 
 const QuantityGroup = styled.div`
   display: flex;
@@ -23,6 +25,20 @@ const QuantityTitle = styled.span`
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: ${theme.space[2]}px;
+  display: block;
+`
+
+const SelectionTitle = styled.span`
+  display: block;
+  font-size: ${theme.fontSizes[2]};
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: ${theme.space[2]}px;
+`
+
+const VariantButton = styled.button`
+  ${theme.buttons.default}
 `
 
 const ButtonGroup = styled.div`
@@ -36,9 +52,11 @@ const ButtonGroup = styled.div`
 `
 
 const ProductTemplate = ({ data }) => {
-  const { name, id, longDescription, price, fields, thumbnailPhoto } = data.contentfulProduct
+  const { name, id, longDescription, price, fields, thumbnailPhoto, variants } = data.contentfulProduct
 
   const [quantity, setQuantity] = useState(1)
+
+  const variantMenu = _.groupBy(variants, 'optionName')
   
   
   return (
@@ -92,6 +110,19 @@ const ProductTemplate = ({ data }) => {
                 opacity: 0.8,
               })}
             />}
+          <div>
+            
+            {Object.keys(variantMenu).map((variantOptionName, i) => {
+              return (
+                <div key={i}>
+                  <VariantSelector
+                    options={variantMenu[variantOptionName]}
+                    optionName={variantOptionName}
+                  />
+                </div>
+              )
+            })}
+          </div>
           <QuantityGroup>
             <QuantityTitle>Quantity</QuantityTitle>
             <QuantitySelector onQuantityChange={setQuantity} />
@@ -145,13 +176,10 @@ export const query = graphql`
       fields {
         path
       }
-      shortDescription {
-        childMarkdownRemark {
-          html
-        }
-        internal {
-          content
-        }
+      variants {
+        optionName
+        label
+        additionalCost
       }
       longDescription {
         childMarkdownRemark {

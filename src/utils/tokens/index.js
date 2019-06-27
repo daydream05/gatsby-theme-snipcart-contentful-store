@@ -58,6 +58,19 @@ const zIndices = {
   header: `100`,
 }
 
+const buttons = {
+  default: {
+    border: `1px solid black`,
+    backgroundColor: `white`,
+    borderRadius: 4,
+    padding: 3,
+  },
+  selected: {
+    backgroundColor: 'black',
+    color: 'white',
+  }
+}
+
 export default {
   fonts,
   fontSizes,
@@ -69,5 +82,6 @@ export default {
   colors,
   maxWidths,
   headerHeight,
-  zIndices
+  zIndices,
+  buttons,
 }
