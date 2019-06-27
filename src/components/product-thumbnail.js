@@ -48,13 +48,6 @@ const ProductThumbnail = (props) => {
               mb: [0],
             })}
           >{name}</Styled.h5>
-          {description &&
-            <Styled.p
-              css={css({
-                color: 'grey.dark',
-                mb: [1],
-              })}
-            >{description}</Styled.p>}
           <span
             css={css({
               color: 'accent',
@@ -85,11 +78,6 @@ export const query = graphql`
       }
       fixed(height: 300 width: 300) {
         ...GatsbyContentfulFixed_withWebp
-      }
-    }
-    shortDescription {
-      internal {
-        content
       }
     }
     fields {
