@@ -29,9 +29,9 @@ const ButtonGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: ${theme.space[2]}px;
-  ${theme.mediaQueries.lg} {
+  ${theme.mediaQueries.xl} {
     grid-template-columns: 1fr 1fr;
-    padding-right: ${theme.space[7]}px;
+    padding-right: ${theme.space[6]}px;
   }
 `
 
@@ -49,11 +49,11 @@ const ProductTemplate = ({ data }) => {
             display: `grid`,
             gridTemplateColumns: `1fr 1fr`,
             gridGap: tokens.space[4],
-            maxWidth: tokens.maxWidths[2],
+            maxWidth: tokens.maxWidths[1],
             maxHeight: `100vh`,
             margin: `auto`,
             px: [5],
-            pt: [6],
+            pt: [5],
           },
           [tokens.mediaQueries.xl]: {
             gridGap: tokens.space[5],
@@ -100,6 +100,7 @@ const ProductTemplate = ({ data }) => {
               data-item-id={id}
               data-item-name={name}
               data-item-price={price}
+              className="test"
               relativeUrl={fields.path}
             >Buy now</SnipcartButton>
             <SnipcartButton
@@ -128,8 +129,11 @@ export const query = graphql`
       id
       thumbnailPhoto {
         title
-        fluid(quality: 100, maxWidth: 720, maxHeight: 720) {
+        fluid(quality: 100, maxWidth: 600, maxHeight: 600) {
           ...GatsbyContentfulFluid_withWebp
+        }
+        fixed(width: 600, height: 600) {
+          ...GatsbyContentfulFixed_withWebp
         }
       }
       fields {

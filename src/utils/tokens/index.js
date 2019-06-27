@@ -52,6 +52,12 @@ for (let breakpoint in breakpoints) {
 
 const maxWidths = [`900px`, `1200px`, `1440px`]
 
+const headerHeight = `88.3px`
+
+const zIndices = {
+  header: `100`,
+}
+
 export default {
   fonts,
   fontSizes,
@@ -61,5 +67,7 @@ export default {
   mediaQueries,
   lineHeights,
   colors,
-  maxWidths
+  maxWidths,
+  headerHeight,
+  zIndices
 }
