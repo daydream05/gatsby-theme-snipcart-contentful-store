@@ -28,19 +28,6 @@ const QuantityTitle = styled.span`
   display: block;
 `
 
-const SelectionTitle = styled.span`
-  display: block;
-  font-size: ${theme.fontSizes[2]};
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: ${theme.space[2]}px;
-`
-
-const VariantButton = styled.button`
-  ${theme.buttons.default}
-`
-
 const ButtonGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -56,9 +43,28 @@ const ProductTemplate = ({ data }) => {
 
   const [quantity, setQuantity] = useState(1)
 
-  const variantMenu = _.groupBy(variants, 'optionName')
-  
-  
+  const defaultFieldValues = {}
+
+  const groupedVariantsByOptionName = _.groupBy(variants, 'optionName')
+
+  Object.keys(groupedVariantsByOptionName).forEach((key, index) => {
+    defaultFieldValues[index] = groupedVariantsByOptionName[key][0].label
+  })
+
+  const [fieldValues, setFieldValue] = useState(defaultFieldValues)
+
+  let snipcartFields = {}
+  // we 
+  Object.keys(groupedVariantsByOptionName).forEach((variantOptionName, index) => {
+    snipcartFields[`data-item-custom${index + 1}-name`] = variantOptionName
+    snipcartFields[`data-item-custom${index + 1}-required`] = true
+    snipcartFields[`data-item-custom${index + 1}-options`] = groupedVariantsByOptionName[variantOptionName].map((option) => {
+      const additionalCost = option.additionalCost !== 0 || undefined ? `[+${option.additionalCost}]` : ``
+      return `${option.label}${additionalCost}`
+    }).join(`|`)
+    snipcartFields[`data-item-custom${index + 1}-value`] = fieldValues[index]
+  })
+
   return (
     <Layout>
       <section
@@ -112,12 +118,19 @@ const ProductTemplate = ({ data }) => {
             />}
           <div>
             
-            {Object.keys(variantMenu).map((variantOptionName, i) => {
+            {Object.keys(groupedVariantsByOptionName).map((variantOptionName, i) => {
               return (
                 <div key={i}>
                   <VariantSelector
-                    options={variantMenu[variantOptionName]}
+                    options={groupedVariantsByOptionName[variantOptionName]}
                     optionName={variantOptionName}
+                    defaultValue={fieldValues[i]}
+                    onValueChange={(label) => {
+                      setFieldValue({
+                        ...fieldValues,
+                        [i]: label
+                      })
+                  }}
                   />
                 </div>
               )
@@ -133,6 +146,7 @@ const ProductTemplate = ({ data }) => {
               data-item-name={name}
               data-item-price={price}
               data-item-image={thumbnailPhoto.small.src}
+              {...snipcartFields}
               className="test"
               relativeUrl={fields.path}
             >Buy now</SnipcartButton>
@@ -142,6 +156,7 @@ const ProductTemplate = ({ data }) => {
               data-item-price={price}
               data-item-quantity={quantity}
               data-item-image={thumbnailPhoto.small.src}
+              {...snipcartFields}
               css={css({
                 backgroundColor: 'white',
                 border: `1px solid black`,

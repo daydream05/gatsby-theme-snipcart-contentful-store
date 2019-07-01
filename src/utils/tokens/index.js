@@ -64,10 +64,24 @@ const buttons = {
     backgroundColor: `white`,
     borderRadius: 4,
     padding: 3,
+    cursor: `pointer`,
+    ":hover, :focus": {
+      backgroundColor: `black`,
+      color: `white`,
+    }
   },
-  selected: {
-    backgroundColor: 'black',
-    color: 'white',
+  variant: {
+    default: {
+      border: `1px solid black`,
+      backgroundColor: `white`,
+      borderRadius: 4,
+      padding: 3,
+      cursor: `pointer`,
+    },
+    selected: {
+      backgroundColor: `black`,
+      color: `white`,
+    }
   }
 }
 

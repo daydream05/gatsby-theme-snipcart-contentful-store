@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { css } from 'theme-ui'
 
@@ -14,9 +14,13 @@ const SelectionTitle = styled.span`
 `
 
 const VariantSelector = (props) => {
-  const { options, optionName } = props
+  const { options, optionName, onValueChange, defaultValue } = props
 
-  const [selectedOption, setSelectedOption] = useState(null)
+  const [selectedOption, setSelectedOption] = useState(defaultValue)
+
+  useEffect(() => {
+    onValueChange(selectedOption)
+  }, [selectedOption])
 
   return (
     <div>
@@ -28,18 +32,27 @@ const VariantSelector = (props) => {
         })}
       >
         {options.map((value, id) => {
+          const isSelected = selectedOption === value.label
+
+          const buttonStyle = isSelected ? {
+            ...theme.buttons.variant.default,
+            ...theme.buttons.variant.selected
+          } : {
+            ...theme.buttons.variant.default,
+          }
           return (
             <div
               css={css({
                 mr: 2,
               })}
+              key={id}
             >
               <button
-                css={css({
-                  ...theme.buttons.default,
-                })}
-                onClick={() =>  setSelectedOption(value.label)}
-              >{value.label}</button>
+                css={css(buttonStyle)}
+                onClick={() => {
+                  setSelectedOption(value.label)
+                }}
+              >{`${value.label} [+$${value.additionalCost}]`}</button>
             </div>
           )
         })}
