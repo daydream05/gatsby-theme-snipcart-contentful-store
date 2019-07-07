@@ -12,6 +12,7 @@ import Layout from '../components/layout'
 import SnipcartButton from '../components/snipcart-button'
 import QuantitySelector from '../components/quantity-selector'
 import VariantSelector from '../components/variant-selector'
+import ProductSEO from '../components/product-seo'
 
 const QuantityGroup = styled.div`
   display: flex;
@@ -67,6 +68,11 @@ const ProductTemplate = ({ data }) => {
 
   return (
     <Layout>
+      <ProductSEO
+        name={name}
+        price={price}
+        description={longDescription}
+      />
       <section
         css={css({
           [tokens.mediaQueries.lg]: {
