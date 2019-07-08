@@ -40,7 +40,7 @@ const ButtonGroup = styled.div`
 `
 
 const ProductTemplate = ({ data }) => {
-  const { name, id, longDescription, price, fields, thumbnailPhoto, variants } = data.contentfulProduct
+  const { name, id, longDescription, price, fields, thumbnailPhoto, variants, shortDescription } = data.contentfulProduct
 
   const [quantity, setQuantity] = useState(1)
 
@@ -71,7 +71,7 @@ const ProductTemplate = ({ data }) => {
       <ProductSEO
         name={name}
         price={price}
-        description={longDescription}
+        description={shortDescription.internal.content}
       />
       <section
         css={css({
@@ -201,6 +201,11 @@ export const query = graphql`
         optionName
         label
         additionalCost
+      }
+      shortDescription {
+        internal {
+          content
+        }
       }
       longDescription {
         childMarkdownRemark {

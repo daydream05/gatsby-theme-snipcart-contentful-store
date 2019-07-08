@@ -38,8 +38,8 @@ const ProductSEO = (props) => {
 
   return (
     <Helmet>
-      <title>Test</title>
-      <meta name="description" content="Nested component" />
+      <title>{name}</title>
+      <meta name="description" content={description} />
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
       </script>
