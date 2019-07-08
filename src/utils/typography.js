@@ -43,6 +43,7 @@ const typography = new Typography({
       },
       p: {
         lineHeight: lineHeights.body,
+        fontFamily: fonts.body,
       },
       [mediaQueries.xl]: {
         h1: {

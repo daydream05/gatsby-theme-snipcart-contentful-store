@@ -52,6 +52,7 @@ const ProductThumbnail = (props) => {
             css={css({
               color: 'accent',
               fontWeight: 'bold',
+              fontFamily: 'body',
               display: `flex`,
               flex: 1,
               flexDirection: `column`,

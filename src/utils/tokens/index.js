@@ -15,7 +15,6 @@ const colors = {
 const fonts = {
   body: 'system-ui, sans-serif',
   heading: 'system-ui, sans-serif',
-  monospace: 'Menlo, monospace'
 }
 
 const fontSizes =

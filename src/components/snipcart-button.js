@@ -12,7 +12,6 @@ const Button = styled.button`
   align-items: center;
   border-radius: 4px;
   font-family: ${theme.fonts.heading};
-  background-color: ${theme.colors.accent};
   height: 64px;
   font-size: 18px;
   cursor: pointer;
@@ -39,6 +38,9 @@ const SnipcartButton = ({ children, relativeUrl, className, ...rest }) => {
       className={`snipcart-add-item ${className}`}
       data-item-url={`${data.site.siteMetadata.siteUrl}${relativeUrl || ''}`}
       {...rest}
+      css={css({
+        backgroundColor: `accent`,
+      })}
     >{children}</Button>
   )
 }
