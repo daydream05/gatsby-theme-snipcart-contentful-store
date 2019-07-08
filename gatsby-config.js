@@ -4,28 +4,27 @@ module.exports = themeOptions => {
       title: `Contentful and Snipcart Powered Shop`,
       // will override the default values,
       ...themeOptions.siteMetadata,
-      theme: JSON.stringify(themeOptions.theme)
     },
     plugins: [
+      `gatsby-plugin-theme-ui`,
       {
         resolve: `gatsby-mdx`,
         options: {
           defaultLayouts: {
-            default: require.resolve(`./src/components/layout.js`),
+            default: require.resolve(`./src/components/layout.js`)
           }
         }
       },
       {
         resolve: `gatsby-source-contentful`,
-        options: themeOptions.contentfulOptions,
+        options: themeOptions.contentfulOptions
       },
       {
-        resolve: 'gatsby-plugin-snipcart',
-        options: themeOptions.snipcartOptions,
+        resolve: "gatsby-plugin-snipcart",
+        options: themeOptions.snipcartOptions
       },
-      `gatsby-plugin-emotion`,
       `gatsby-transformer-remark`,
-      `gatsby-plugin-react-helmet`,
-    ],
-  }
+      `gatsby-plugin-react-helmet`
+    ]
+  };
 }

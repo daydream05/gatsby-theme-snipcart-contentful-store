@@ -2,14 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
+import { css } from "theme-ui";
+
+import theme from '../gatsby-plugin-theme-ui'
 
 const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  font-family: bebas-neue, sans-serif;
-  background-color: ${props => props.theme.colors.accent};
+  font-family: ${theme.fonts.heading};
+  background-color: ${theme.colors.accent};
   height: 64px;
   font-size: 18px;
   cursor: pointer;

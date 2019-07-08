@@ -5,8 +5,7 @@ import { css, Styled } from 'theme-ui'
 import Img from 'gatsby-image'
 import _ from 'lodash'
 
-import tokens from '../utils/tokens'
-import theme from '../utils/theme'
+import theme from '../gatsby-plugin-theme-ui'
 
 import Layout from '../components/layout'
 import SnipcartButton from '../components/snipcart-button'
@@ -75,72 +74,76 @@ const ProductTemplate = ({ data }) => {
       />
       <section
         css={css({
-          [tokens.mediaQueries.lg]: {
+          [theme.mediaQueries.lg]: {
             display: `grid`,
             gridTemplateColumns: `1fr 1fr`,
-            gridGap: tokens.space[4],
-            maxWidth: tokens.maxWidths[1],
+            gridGap: theme.space[4],
+            maxWidth: theme.maxWidths[1],
             maxHeight: `100vh`,
             margin: `auto`,
             px: [5],
-            pt: [5],
+            pt: [5]
           },
-          [tokens.mediaQueries.xl]: {
-            gridGap: tokens.space[5],
+          [theme.mediaQueries.xl]: {
+            gridGap: theme.space[5]
           }
         })}
       >
-        <Img
-          alt={thumbnailPhoto.title}
-          fluid={thumbnailPhoto.fluid}
-        />
+        <Img alt={thumbnailPhoto.title} fluid={thumbnailPhoto.fluid} />
         <section
           css={css({
-            px: [3,4,4,4,4,0],
-            py: [4,4,4,4,0,0],
+            px: [3, 4, 4, 4, 4, 0],
+            py: [4, 4, 4, 4, 0, 0]
           })}
         >
           <span
             css={css({
               fontSize: [3],
-              fontWeight: 'body',
+              fontWeight: "body"
             })}
-          >${price}
+          >
+            ${price}
           </span>
           <Styled.h1
             css={css({
-              mb: [1,1,1,3],
+              mb: [1, 1, 1, 3]
             })}
-          >{name}</Styled.h1>
-          {longDescription &&
+          >
+            {name}
+          </Styled.h1>
+          {longDescription && (
             <div
-              dangerouslySetInnerHTML={{ __html: longDescription.childMarkdownRemark.html }}
+              dangerouslySetInnerHTML={{
+                __html: longDescription.childMarkdownRemark.html
+              }}
               css={css({
-                lineHeight: 'body',
-                mb: [3,3,3,5],
+                lineHeight: "body",
+                mb: [3, 3, 3, 5],
                 color: `black`,
-                opacity: 0.8,
+                opacity: 0.8
               })}
-            />}
+            />
+          )}
           <div>
-            
-            {Object.keys(groupedVariantsByOptionName).map((variantOptionName, i) => {
-              return (
-                <div key={i}>
-                  <VariantSelector
-                    options={groupedVariantsByOptionName[variantOptionName]}
-                    optionName={variantOptionName}
-                    defaultValue={fieldValues[i]}
-                    onValueChange={(label) => {
-                      setFieldValue({
-                        ...fieldValues,
-                        [i]: label
-                      })
-                  }}
-                  />
-                </div>
-              )
-            })}
+            {Object.keys(groupedVariantsByOptionName).map(
+              (variantOptionName, i) => {
+                return (
+                  <div key={i}>
+                    <VariantSelector
+                      options={groupedVariantsByOptionName[variantOptionName]}
+                      optionName={variantOptionName}
+                      defaultValue={fieldValues[i]}
+                      onValueChange={label => {
+                        setFieldValue({
+                          ...fieldValues,
+                          [i]: label
+                        });
+                      }}
+                    />
+                  </div>
+                );
+              }
+            )}
           </div>
           <QuantityGroup>
             <QuantityTitle>Quantity</QuantityTitle>
@@ -155,7 +158,9 @@ const ProductTemplate = ({ data }) => {
               {...snipcartFields}
               className="test"
               relativeUrl={fields.path}
-            >Buy now</SnipcartButton>
+            >
+              Buy now
+            </SnipcartButton>
             <SnipcartButton
               data-item-id={id}
               data-item-name={name}
@@ -164,16 +169,18 @@ const ProductTemplate = ({ data }) => {
               data-item-image={thumbnailPhoto.small.src}
               {...snipcartFields}
               css={css({
-                backgroundColor: 'white',
-                border: `1px solid black`,
+                backgroundColor: "white",
+                border: `1px solid black`
               })}
               relativeUrl={fields.path}
-            >Add to cart</SnipcartButton>
+            >
+              Add to cart
+            </SnipcartButton>
           </ButtonGroup>
         </section>
       </section>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`

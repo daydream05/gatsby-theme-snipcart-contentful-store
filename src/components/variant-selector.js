@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { css } from 'theme-ui'
 
-import theme from '../utils/theme'
+import theme from '../gatsby-plugin-theme-ui'
 
 const SelectionTitle = styled.span`
   display: block;

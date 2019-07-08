@@ -2,14 +2,14 @@ import React from "react"
 import { graphql } from 'gatsby'
 import { css, Styled } from 'theme-ui'
 
-import tokens from '../utils/tokens'
+import theme from '../gatsby-plugin-theme-ui'
 
 import Layout from '../components/layout'
 import ProductList from '../components/product-list'
 
 const StoreLanding = props => {
   const { data } = props
-  const { mediaQueries } = tokens
+  const { mediaQueries } = theme
 
   return (
     <Layout>
@@ -24,7 +24,7 @@ const StoreLanding = props => {
             px: [3],
             pt: [5],
             [mediaQueries.lg]: {
-              maxWidth: [tokens.maxWidths[1]],
+              maxWidth: [theme.maxWidths[1]],
               margin: `auto`,
             }
           })}
