@@ -6,7 +6,6 @@ import theme from '../gatsby-plugin-theme-ui'
 
 const SelectionTitle = styled.span`
   display: block;
-  font-size: ${theme.fontSizes[2]};
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -24,7 +23,12 @@ const VariantSelector = (props) => {
 
   return (
     <div>
-      <SelectionTitle>{optionName}</SelectionTitle>
+      <SelectionTitle
+        css={css({
+          fontSize: 2,
+          fontFamily: `body`,
+        })}
+      >{optionName}</SelectionTitle>
       <div
         css={css({
           display: `flex`,

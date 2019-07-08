@@ -10,8 +10,4 @@ const theme = merge({
   ...typography,
 });
 
-console.log(theme)
-
-console.log(typography)
-
 export default theme

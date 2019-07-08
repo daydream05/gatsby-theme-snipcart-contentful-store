@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { css, Styled } from 'theme-ui'
+import { css, Styled, jsx } from 'theme-ui'
 import Img from 'gatsby-image'
 import _ from 'lodash'
 
@@ -20,7 +20,6 @@ const QuantityGroup = styled.div`
 `
 
 const QuantityTitle = styled.span`
-  font-size: ${theme.fontSizes[2]};
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -99,7 +98,9 @@ const ProductTemplate = ({ data }) => {
           <span
             css={css({
               fontSize: [3],
-              fontWeight: "body"
+              fontWeight: "body",
+              fontFamily: `body`,
+
             })}
           >
             ${price}
@@ -147,7 +148,12 @@ const ProductTemplate = ({ data }) => {
             )}
           </div>
           <QuantityGroup>
-            <QuantityTitle>Quantity</QuantityTitle>
+            <QuantityTitle
+              css={css({
+                fontFamily: `body`,
+                fontSize: 2,
+              })}
+            >Quantity</QuantityTitle>
             <QuantitySelector onQuantityChange={setQuantity} />
           </QuantityGroup>
           <ButtonGroup>
@@ -192,10 +198,10 @@ export const query = graphql`
       id
       thumbnailPhoto {
         title
-        fluid(quality: 100, maxWidth: 600, maxHeight: 600) {
+        fluid(quality: 100, maxWidth: 800, maxHeight: 1000) {
           ...GatsbyContentfulFluid_withWebp
         }
-        fixed(width: 600, height: 600) {
+        fixed(width: 400, height: 500) {
           ...GatsbyContentfulFixed_withWebp
         }
         small: fixed(width: 100, height: 100) {
