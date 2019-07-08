@@ -25,6 +25,7 @@ module.exports = themeOptions => {
       },
       `gatsby-plugin-emotion`,
       `gatsby-transformer-remark`,
+      `gatsby-plugin-react-helmet`,
     ],
   }
 }

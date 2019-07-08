@@ -58,6 +58,33 @@ const zIndices = {
   header: `100`,
 }
 
+const buttons = {
+  default: {
+    border: `1px solid black`,
+    backgroundColor: `white`,
+    borderRadius: 4,
+    padding: 3,
+    cursor: `pointer`,
+    ":hover, :focus": {
+      backgroundColor: `black`,
+      color: `white`,
+    }
+  },
+  variant: {
+    default: {
+      border: `1px solid black`,
+      backgroundColor: `white`,
+      borderRadius: 4,
+      padding: 3,
+      cursor: `pointer`,
+    },
+    selected: {
+      backgroundColor: `black`,
+      color: `white`,
+    }
+  }
+}
+
 export default {
   fonts,
   fontSizes,
@@ -69,5 +96,6 @@ export default {
   colors,
   maxWidths,
   headerHeight,
-  zIndices
+  zIndices,
+  buttons,
 }
