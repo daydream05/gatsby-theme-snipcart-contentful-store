@@ -1,11 +1,11 @@
 exports.onCreateNode = (
   { node, actions },
-  { storePath = `/store`}
+  { storePath = `/store/`}
 ) => {
   const { createNodeField } = actions
 
   if(node.internal.type === `ContentfulProduct`) {
-    const url = `${storePath}/${node.slug}/`
+    const url = `${storePath}${node.slug}/`
 
     createNodeField({
       node,
@@ -17,7 +17,7 @@ exports.onCreateNode = (
 
 exports.createPages = (
   { graphql, actions },
-  { storePath = `/store`, }
+  { storePath = `/store/`, }
 ) => {
   const { createPage } = actions
   const loadProducts = new Promise((resolve, reject) => {
@@ -55,7 +55,7 @@ exports.createPages = (
 
   // create root store landing page
   createPage({
-    path: `${storePath}/`,
+    path: `${storePath}`,
     component: require.resolve(`./src/templates/store-landing-template.js`)
   })
 
